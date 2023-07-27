@@ -1,56 +1,29 @@
 package com.ldcc.example;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import com.ldcc.example.MyRouteMainActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import android.view.View;
+import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    BottomNavigationView bnv;
-    FrameLayout fl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bnv = findViewById(R.id.menu_bottom_navigation);
-        fl = findViewById(R.id.menu_frame_layout);
+        Button button = findViewById(R.id.button);
 
-        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_share:
-                        changeFragment(new ShareFragment());
-                        break;
-
-                    case R.id.menu_main:
-                        changeFragment(new MainFragment());
-                        break;
-
-                    case R.id.menu_recommend:
-                        changeFragment(new RecommendFragment());
-                        break;
-                }
-
-                return true;
+            public void onClick(View view) {
+                //화면전환
+                Intent intent = new Intent(MainActivity.this, MyRouteMainActivity.class);
+                startActivity(intent);
             }
         });
-
-        bnv.setSelectedItemId(R.id.menu_main);
     }
-
-    public void changeFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(fl.getId(), fragment).commit();
-    }
-
 }
