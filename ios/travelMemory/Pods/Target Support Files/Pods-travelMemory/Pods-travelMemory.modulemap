@@ -1,0 +1,6 @@
+framework module Pods_travelMemory {
+  umbrella header "Pods-travelMemory-umbrella.h"
+
+  export *
+  module * { export * }
+}

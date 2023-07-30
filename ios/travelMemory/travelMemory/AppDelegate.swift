@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NaverThirdPartyLogin
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 네이버 로그인 설정
+        naverLogin()
+        
         return true
     }
 
@@ -32,5 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    // 네이버 로그인
+    func naverLogin () {
+        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+        
+        // 둘 다 활성화 해두면 다운로드 된 앱 있는지 체크 후 있으면 네이버 앱, 없으면 사파리로 인증
+        //instance?.isNaverAppOauthEnable = true // 네이버 앱으로 인증하는 방식 활성화
+        instance?.isInAppOauthEnable = true // Safari에서 인증하는 방식 활성화
+        
+        instance?.serviceUrlScheme = "com.newdeps.travelMemory"
+        instance?.consumerKey = "dCtqaYMuJNj82G55KOb0"
+        instance?.consumerSecret = "_I9f3WSVyC"
+        instance?.appName = "네이버 아이디로 로그인"
+    }
+    
 }
 
