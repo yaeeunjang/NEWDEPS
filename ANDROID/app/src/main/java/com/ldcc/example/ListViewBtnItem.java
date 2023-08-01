@@ -5,12 +5,16 @@ import android.graphics.drawable.Drawable;
 public class ListViewBtnItem {
     private Drawable iconDrawable ;
     private String textStr ;
+    private int selectedIndex;
 
     public void setText(String text) {
         textStr = text ;
     }
 
+    public void setSelectedIndex(int index) {selectedIndex = index; }
     public String getText() {
         return this.textStr ;
     }
+
+    public int getSelectedIndex() { return this.selectedIndex; }
 }

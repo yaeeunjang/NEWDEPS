@@ -13,12 +13,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickListener{
+    int selectedItem;
+    boolean selected = false;
     public interface ListBtnClickListener {
         void onListBtnClick(int position) ;
     }
@@ -38,6 +41,7 @@ public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickLi
 
         this.listBtnClickListener = clickListener ;
     }
+
 
     // 새롭게 만든 Layout을 위한 View를 생성하는 코드
     @Override
@@ -60,12 +64,13 @@ public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickLi
         // 아이템 내 각 위젯에 데이터 반영
         textTextView.setText(listViewItem.getText());
 
-        // button1 클릭 시 TextView(textView1)의 내용 변경.
+        // button1 클릭 시
         RadioButton button1 = (RadioButton) convertView.findViewById(R.id.listViewRadioButton);
         button1.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                //라디오 버튼 클릭 시 해당 row index 가져오기
-                int index = pos + 1;
+                //라디오 버튼 클릭 시 다른 라디오 버튼은 체크 해제
+                selectedItem = pos;
+
             }
         });
 
@@ -85,5 +90,7 @@ public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickLi
             this.listBtnClickListener.onListBtnClick((int)v.getTag()) ;
         }
     }
-
+    public int getItemIndex() {
+        return selectedItem;
+    }
 }

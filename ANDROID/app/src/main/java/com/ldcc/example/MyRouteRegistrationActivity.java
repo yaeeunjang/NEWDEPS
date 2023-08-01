@@ -54,7 +54,6 @@ public class MyRouteRegistrationActivity extends AppCompatActivity implements Ro
     String currentSelectedBox = "";
     LinearLayout out_address;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,28 +66,29 @@ public class MyRouteRegistrationActivity extends AppCompatActivity implements Ro
         ImageButton imagebtn3 = (ImageButton) findViewById(R.id.imageButton3);
         Button btn1 = (Button) findViewById(R.id.btn4);
         Button add_btn = (Button) findViewById(R.id.add_btn);
+        Button delete_btn = (Button) findViewById(R.id.delete_btn);
         imageView = (ImageView) findViewById(R.id.imageView1) ;
         out_address = (LinearLayout) findViewById(R.id.out_address_layout);
+        ListView listview = (ListView) findViewById(R.id.listview1);
 
 
-        ListView listview ;
         RouteListViewAdapter adapter;
         ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>() ;
 
-        createRouteList(items);
-
         adapter = new RouteListViewAdapter(this, R.layout.route_listview_item, items, this);
 
-        listview = (ListView) findViewById(R.id.listview1);
         listview.setAdapter(adapter);
-        // 리스트 뷰 아이템 클릭 시 이벤트
+        listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+        ListViewBtnItem item = new ListViewBtnItem() ;
+        items.add(item);
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-                // TODO : item click
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println(i);
             }
-        }) ;
-
+        });
 
         // 달력 클릭 이벤트
         DatePickerDialog.OnDateSetListener listner = new DatePickerDialog.OnDateSetListener() {
@@ -149,31 +149,34 @@ public class MyRouteRegistrationActivity extends AppCompatActivity implements Ro
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createRouteList(items);
+
+                int count;
+                count = adapter.getCount();
+                ListViewBtnItem item = new ListViewBtnItem() ;
+
+                // 아이템 추가.
+                item.setText("LIST" + Integer.toString(count + 1)) ;
+                items.add(item) ;
                 adapter.notifyDataSetChanged();
 
             }
         });
 
-    }
+        delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int count, checked ;
+                count = adapter.getCount();
+                checked = listview.getCheckedItemPosition();
+                if (count > 1) {
+                    items.remove(checked);
+                    listview.clearChoices();
+                    adapter.notifyDataSetChanged();
 
-    public boolean createRouteList(ArrayList<ListViewBtnItem> list) {
-        ListViewBtnItem item ;
-        int i ;
+                }
+            }
+        });
 
-        if (list == null) {
-            list = new ArrayList<ListViewBtnItem>() ;
-        }
-
-        // 순서를 위한 i 값을 1로 초기화.
-        i = 1 ;
-
-        // 아이템 생성.
-        item = new ListViewBtnItem() ;
-        item.setText("주소를 입력해 주세요") ;
-        list.add(item) ;
-        i++ ;
-        return true;
     }
 
     //갤러리에서 사진 불러오기

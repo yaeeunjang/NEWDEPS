@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ldcc.example.CheckableLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    android:descendantFocusability="blocksDescendants"
     android:id="@+id/in_address_layout"
     android:layout_width="411dp"
     android:layout_height="25dp"
@@ -28,4 +28,4 @@
         android:background="@color/white"
         app:srcCompat="@drawable/baseline_search_24" />
 
-</LinearLayout>
+</com.ldcc.example.CheckableLinearLayout>
