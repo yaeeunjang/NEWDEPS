@@ -14,6 +14,8 @@
 		8E176A742A779AA5006EE253 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E176A732A779AA5006EE253 /* FavoriteViewController.swift */; };
 		8E176A762A779B1A006EE253 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E176A752A779B1A006EE253 /* MyPageViewController.swift */; };
 		8E2E41492A7E8CDF00D006EE /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E41482A7E8CDF00D006EE /* RegisterViewController.swift */; };
+		8E2E414B2A7E8FDC00D006EE /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E414A2A7E8FDC00D006EE /* RegisterView.swift */; };
+		8E2E414D2A7E8FE100D006EE /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2E414C2A7E8FE100D006EE /* RegisterModel.swift */; };
 		8ED5D52B2A74257000B0F216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED5D52A2A74257000B0F216 /* AppDelegate.swift */; };
 		8ED5D52D2A74257000B0F216 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED5D52C2A74257000B0F216 /* SceneDelegate.swift */; };
 		8ED5D5342A74257100B0F216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ED5D5332A74257100B0F216 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		8E176A732A779AA5006EE253 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		8E176A752A779B1A006EE253 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		8E2E41482A7E8CDF00D006EE /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		8E2E414A2A7E8FDC00D006EE /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		8E2E414C2A7E8FE100D006EE /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		8ED5D5272A74257000B0F216 /* travelMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = travelMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED5D52A2A74257000B0F216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ED5D52C2A74257000B0F216 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +79,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8E2E414E2A7E8FE500D006EE /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				8E2E41482A7E8CDF00D006EE /* RegisterViewController.swift */,
+				8E2E414A2A7E8FDC00D006EE /* RegisterView.swift */,
+				8E2E414C2A7E8FE100D006EE /* RegisterModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		8ED5D51E2A74257000B0F216 = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +113,7 @@
 				8ED5D52A2A74257000B0F216 /* AppDelegate.swift */,
 				8ED5D52C2A74257000B0F216 /* SceneDelegate.swift */,
 				8E176A6D2A779201006EE253 /* TabBarViewController.swift */,
-				8E2E41482A7E8CDF00D006EE /* RegisterViewController.swift */,
+				8E2E414E2A7E8FE500D006EE /* Register */,
 				8E176A752A779B1A006EE253 /* MyPageViewController.swift */,
 				8E176A732A779AA5006EE253 /* FavoriteViewController.swift */,
 				8E176A712A7799CD006EE253 /* MainViewController.swift */,
@@ -247,11 +261,13 @@
 			files = (
 				8ED5D5452A7427BC00B0F216 /* LoginViewController.swift in Sources */,
 				8E176A702A779613006EE253 /* RecommendViewController.swift in Sources */,
+				8E2E414B2A7E8FDC00D006EE /* RegisterView.swift in Sources */,
 				8ED5D53F2A74265600B0F216 /* LoginModel.swift in Sources */,
 				8E2E41492A7E8CDF00D006EE /* RegisterViewController.swift in Sources */,
 				8ED5D52B2A74257000B0F216 /* AppDelegate.swift in Sources */,
 				8E176A742A779AA5006EE253 /* FavoriteViewController.swift in Sources */,
 				8ED5D5432A74273100B0F216 /* UIKit+setupView.swift in Sources */,
+				8E2E414D2A7E8FE100D006EE /* RegisterModel.swift in Sources */,
 				8E176A762A779B1A006EE253 /* MyPageViewController.swift in Sources */,
 				8E176A6E2A779201006EE253 /* TabBarViewController.swift in Sources */,
 				8E176A722A7799CD006EE253 /* MainViewController.swift in Sources */,
