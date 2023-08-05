@@ -38,7 +38,6 @@ public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickLi
 
         // resource id 값 복사. (super로 전달된 resource를 참조할 방법이 없음.)
         this.resourceId = resource ;
-
         this.listBtnClickListener = clickListener ;
     }
 
@@ -46,7 +45,7 @@ public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickLi
     // 새롭게 만든 Layout을 위한 View를 생성하는 코드
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final int pos = position ;
+
         final Context context = parent.getContext();
 
         // 생성자로부터 저장된 resourceId(listview_btn_item)에 해당하는 Layout을 inflate하여 convertView 참조 획득.
@@ -54,25 +53,6 @@ public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickLi
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(this.resourceId/*R.layout.listview_btn_item*/, parent, false);
         }
-
-        // 화면에 표시될 View(Layout이 inflate된)로부터 위젯에 대한 참조 획득
-        final TextView textTextView = (TextView) convertView.findViewById(R.id.listViewTextView);
-
-        // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        final ListViewBtnItem listViewItem = (ListViewBtnItem) getItem(position);
-
-        // 아이템 내 각 위젯에 데이터 반영
-        textTextView.setText(listViewItem.getText());
-
-        // button1 클릭 시
-        RadioButton button1 = (RadioButton) convertView.findViewById(R.id.listViewRadioButton);
-        button1.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                //라디오 버튼 클릭 시 다른 라디오 버튼은 체크 해제
-                selectedItem = pos;
-
-            }
-        });
 
         // button2의 TAG에 position값 지정. Adapter를 click listener로 지정.
         ImageButton button2 = (ImageButton) convertView.findViewById(R.id.listViewImageButton);
@@ -89,8 +69,5 @@ public class RouteListViewAdapter extends ArrayAdapter implements View.OnClickLi
         if (this.listBtnClickListener != null) {
             this.listBtnClickListener.onListBtnClick((int)v.getTag()) ;
         }
-    }
-    public int getItemIndex() {
-        return selectedItem;
     }
 }

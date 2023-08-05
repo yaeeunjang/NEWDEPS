@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyRouteMainActivity extends AppCompatActivity implements RouteRecycleViewAdapter.MyRecyclerViewClickListener{
+public class MyRouteMainActivity extends AppCompatActivity implements RouteRecycleViewAdapter.RouteRecycleViewClickListener{
 
-    private ArrayList<RecycleViewItem> dataList;   /// 데이터를 담기위한 어레이 리스트
-    private RouteRecycleViewAdapter adapter; //어댑터
+
     private RecyclerView recyclerview;
     private LinearLayoutManager linearLayoutManager;
 
@@ -33,13 +32,13 @@ public class MyRouteMainActivity extends AppCompatActivity implements RouteRecyc
         recyclerview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL)); ///구분선 넣어주는 옵션
         linearLayoutManager = new LinearLayoutManager(this); // 레이아웃 매니져
         recyclerview.setLayoutManager(linearLayoutManager); // 리사이클러뷰에 set 해준다 .
-        dataList = new ArrayList<>(); // 어댑터 선언
-        adapter = new RouteRecycleViewAdapter(dataList); // 어댑터에 어레이리스트 넣어준다.
+        ArrayList<RecycleViewItem> dataList = new ArrayList<>(); // 어댑터 선언
+        RouteRecycleViewAdapter adapter = new RouteRecycleViewAdapter(dataList); // 어댑터에 어레이리스트 넣어준다.
         recyclerview.setAdapter(adapter);// 리사이클러뷰에 어댑터 set 해준다
 
         RecycleViewItem item = new RecycleViewItem();
         dataList.add(0, item);
-        adapter.notifyDataSetChanged();
+
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override

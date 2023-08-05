@@ -20,7 +20,7 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
         this.itemData = itemData;
     }
 
-    public interface MyRecyclerViewClickListener{
+    public interface RouteRecycleViewClickListener{
         void onItemClicked(int position);
         void onTitleClicked(int position);
         void onContentClicked(int position);
@@ -29,9 +29,9 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
     }
 
 
-    private MyRecyclerViewClickListener mListener;
+    private RouteRecycleViewClickListener mListener;
 
-    public void setOnClickListener(MyRecyclerViewClickListener listener) {
+    public void setOnClickListener(RouteRecycleViewClickListener listener) {
         this.mListener = listener;
     }
 
@@ -47,10 +47,6 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         RecycleViewItem item = itemData.get(position);
-        holder.title.setText(item.getTitle());
-        System.out.println(item.getTitle());
-        holder.date.setText(item.getDate());
-        holder.image.setImageResource(item.getImage());
 
         if (mListener != null) {
             final int pos = position;
@@ -103,9 +99,6 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
             date = itemView.findViewById(R.id.textviewDate);
             image = itemView.findViewById(R.id.imageViewRoute);
 
-            //이미지뷰 원형으로 표시
-            image.setBackground(new ShapeDrawable(new OvalShape()));
-            image.setClipToOutline(true);
         }
     }
 
