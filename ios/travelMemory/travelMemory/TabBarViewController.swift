@@ -27,9 +27,18 @@ class TabBarViewController: UITabBarController {
         return navigationView
     }()
     
+    private lazy var registerViewController: UINavigationController = {
+        let viewController = RegisterViewController()
+        let tabBarItem = UITabBarItem(title: "등록", image: UIImage(named: "registerViewButton"), tag: 2)
+        tabBarItem.imageInsets = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        viewController.tabBarItem = tabBarItem
+        let navigationView = UINavigationController(rootViewController: viewController)
+        return navigationView
+    }()
+    
     private lazy var favoriteViewController: UINavigationController = {
         let viewController = FavoriteViewController()
-        let tabBarItem = UITabBarItem(title: "찜", image: UIImage(named: "favoriteViewButton"), tag: 2)
+        let tabBarItem = UITabBarItem(title: "찜", image: UIImage(named: "favoriteViewButton"), tag: 3)
         tabBarItem.imageInsets = UIEdgeInsets(top: 40, left: 0, bottom: 40, right: 0)
         viewController.tabBarItem = tabBarItem
         let navigationView = UINavigationController(rootViewController: viewController)
@@ -38,7 +47,7 @@ class TabBarViewController: UITabBarController {
    
     private lazy var myPageViewController: UINavigationController = {
         let viewController = MyPageViewController()
-        let tabBarItem = UITabBarItem(title: "마이", image: UIImage(named: "myPageViewButton"), tag: 3)
+        let tabBarItem = UITabBarItem(title: "마이", image: UIImage(named: "myPageViewButton"), tag: 4)
         tabBarItem.imageInsets = UIEdgeInsets(top: 40, left: 0, bottom: 40, right: 0)
         viewController.tabBarItem = tabBarItem
         let navigationView = UINavigationController(rootViewController: viewController)
@@ -50,7 +59,7 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.gray
-        viewControllers = [recommendViewcontroller, mainViewController, favoriteViewController, myPageViewController]
+        viewControllers = [recommendViewcontroller, mainViewController, registerViewController, favoriteViewController, myPageViewController]
         self.selectedIndex = 1
         self.configureTabBar()
     }
