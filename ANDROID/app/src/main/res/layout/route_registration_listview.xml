@@ -11,7 +11,9 @@
     <RadioButton
         android:id="@+id/listViewRadioButton"
         android:layout_width="29dp"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false"/>
 
     <TextView
         android:id="@+id/listViewTextView"
