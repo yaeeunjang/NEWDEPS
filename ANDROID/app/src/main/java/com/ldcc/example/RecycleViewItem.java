@@ -1,5 +1,7 @@
 package com.ldcc.example;
 
+import android.graphics.drawable.Drawable;
+
 public class RecycleViewItem {
     private int image;
     private String title;
@@ -17,7 +19,7 @@ public class RecycleViewItem {
 
     }
 
-    public String getTitle() {
+        public String getTitle() {
             return this.title;
         }
 

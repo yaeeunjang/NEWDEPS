@@ -1,7 +1,6 @@
 package com.ldcc.example;
 
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +19,14 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
         this.itemData = itemData;
     }
 
-    public interface RouteRecycleViewClickListener{
+    public interface OnItemClickListener {
         void onItemClicked(int position);
-        void onTitleClicked(int position);
-        void onContentClicked(int position);
-        void onItemLongClicked(int position);
-        void onImageViewClicked(int position);
     }
 
 
-    private RouteRecycleViewClickListener mListener;
+    private OnItemClickListener mListener;
 
-    public void setOnClickListener(RouteRecycleViewClickListener listener) {
+    public void setOnClickListener(OnItemClickListener listener) {
         this.mListener = listener;
     }
 
@@ -48,37 +43,19 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         RecycleViewItem item = itemData.get(position);
 
+        holder.image.setImageResource(item.getImage());
+        holder.title.setText(item.getTitle());
+        holder.date.setText(item.getDate());
+
         if (mListener != null) {
             final int pos = position;
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    v.setBackgroundColor(Color.GRAY);
+                    System.out.println("s");
                     mListener.onItemClicked(pos);
-                }
-            });
-            holder.title.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onTitleClicked(pos);
-                }
-            });
-            holder.date.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onContentClicked(pos);
-                }
-            });
-            holder.image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onImageViewClicked(pos);
-                }
-            });
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    mListener.onItemLongClicked(holder.getAdapterPosition());
-                    return true;
+
                 }
             });
         }
@@ -99,16 +76,6 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
             date = itemView.findViewById(R.id.textviewDate);
             image = itemView.findViewById(R.id.imageViewRoute);
 
-        }
-    }
-
-    //리스트 삭제 이벤트
-    public void remove(int position){
-        try {
-            itemData.remove(position);
-            notifyDataSetChanged();
-        } catch (IndexOutOfBoundsException e){
-            e.printStackTrace();
         }
     }
 }

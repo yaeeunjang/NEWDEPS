@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -13,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyRouteMainActivity extends AppCompatActivity implements RouteRecycleViewAdapter.RouteRecycleViewClickListener{
+public class MyRouteMainActivity extends AppCompatActivity implements RouteRecycleViewAdapter.OnItemClickListener {
 
 
     private RecyclerView recyclerview;
@@ -37,7 +39,9 @@ public class MyRouteMainActivity extends AppCompatActivity implements RouteRecyc
         recyclerview.setAdapter(adapter);// 리사이클러뷰에 어댑터 set 해준다
 
         RecycleViewItem item = new RecycleViewItem();
-        dataList.add(0, item);
+        dataList.add(new RecycleViewItem(R.drawable.seoul_image,"가족과 함께한 제주 여행","2023.07.01 ~ 2023.08.31"));
+        dataList.add(new RecycleViewItem(R.drawable.seoul_image,"처음 갔던 제주 여행","2023.06.01 ~ 2023.06.31"));
+
 
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -66,23 +70,5 @@ public class MyRouteMainActivity extends AppCompatActivity implements RouteRecyc
 
     }
 
-    @Override
-    public void onTitleClicked(int position) {
 
-    }
-
-    @Override
-    public void onContentClicked(int position) {
-
-    }
-
-    @Override
-    public void onItemLongClicked(int position) {
-
-    }
-
-    @Override
-    public void onImageViewClicked(int position) {
-
-    }
 }
