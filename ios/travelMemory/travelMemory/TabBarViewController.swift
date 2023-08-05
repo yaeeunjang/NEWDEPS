@@ -57,6 +57,7 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         
         self.view.backgroundColor = UIColor.gray
         viewControllers = [recommendViewcontroller, mainViewController, registerViewController, favoriteViewController, myPageViewController]
@@ -86,5 +87,21 @@ extension TabBarViewController {
         self.tabBar.layer.backgroundColor = UIColor.systemBackground.cgColor
         self.tabBar.layer.borderColor = UIColor.lightGray.cgColor
         self.tabBar.layer.borderWidth = 0.4
+    }
+}
+
+extension TabBarViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController.tabBarItem.tag == 2 {
+            print("등록 버튼 클릭")
+            let modalViewController = RegisterViewController()
+            modalViewController.modalPresentationStyle = .fullScreen
+            let navigationView = UINavigationController(rootViewController: modalViewController)
+            present(navigationView, animated: true)
+            
+            return false
+        } else {
+            return true
+        }
     }
 }
