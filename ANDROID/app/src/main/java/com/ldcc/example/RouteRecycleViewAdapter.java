@@ -1,6 +1,7 @@
 package com.ldcc.example;
 
 import android.graphics.Color;
+import android.icu.text.SymbolTable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleViewAdapter.ViewHolder> {
 
     private ArrayList<RecycleViewItem> itemData;
+
+
     public RouteRecycleViewAdapter(ArrayList<RecycleViewItem> itemData) {
         this.itemData = itemData;
     }
@@ -47,13 +50,12 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
         holder.title.setText(item.getTitle());
         holder.date.setText(item.getDate());
 
+
         if (mListener != null) {
             final int pos = position;
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    v.setBackgroundColor(Color.GRAY);
-                    System.out.println("s");
                     mListener.onItemClicked(pos);
 
                 }
@@ -76,6 +78,20 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
             date = itemView.findViewById(R.id.textviewDate);
             image = itemView.findViewById(R.id.imageViewRoute);
 
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+
+                    int pos = getAdapterPosition();
+
+                    v.setBackgroundColor(Color.GRAY);
+
+                    System.out.println(pos);
+
+                }
+            });
         }
     }
 }
+
+
