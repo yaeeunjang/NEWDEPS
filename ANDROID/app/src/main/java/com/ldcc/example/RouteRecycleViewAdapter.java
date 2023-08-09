@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleViewAdapter.ViewHolder> {
 
     private ArrayList<RecycleViewItem> itemData;
-
+    private int current;
 
     public RouteRecycleViewAdapter(ArrayList<RecycleViewItem> itemData) {
         this.itemData = itemData;
@@ -90,11 +90,14 @@ public class RouteRecycleViewAdapter extends RecyclerView.Adapter<RouteRecycleVi
                         itemData.get(i).setSelected(false);
                     }
                     itemData.get(pos).setSelected(true);
-
+                    current = pos;
                     notifyDataSetChanged();
                 }
             });
         }
+    }
+    public int getCurrnetPos() {
+        return current;
     }
 }
 

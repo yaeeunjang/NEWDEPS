@@ -28,7 +28,9 @@ public class MyRouteMainActivity extends AppCompatActivity implements RouteRecyc
 
 
         Button btn1 = (Button) findViewById(R.id.btn1);
+        Button delete_btn = (Button) findViewById(R.id.delete_btn);
         ImageButton imagebtn1 = (ImageButton) findViewById(R.id.imageButton1);
+
 
         recyclerview = (RecyclerView) findViewById(R.id.recycleview1);  /// 리사이클러뷰 초기화
         recyclerview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL)); ///구분선 넣어주는 옵션
@@ -58,6 +60,16 @@ public class MyRouteMainActivity extends AppCompatActivity implements RouteRecyc
                 Intent intent = new Intent();
                 setResult(Activity.RESULT_OK, intent);
                 finish();
+            }
+        });
+
+        delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(dataList.size() != 0 && adapter.getCurrnetPos() > 0) {
+                    dataList.remove(adapter.getCurrnetPos());
+                    adapter.notifyItemRemoved(adapter.getCurrnetPos());
+                }
             }
         });
 
