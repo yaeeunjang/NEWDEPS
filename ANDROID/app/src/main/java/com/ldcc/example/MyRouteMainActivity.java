@@ -39,9 +39,8 @@ public class MyRouteMainActivity extends AppCompatActivity implements RouteRecyc
         recyclerview.setAdapter(adapter);// 리사이클러뷰에 어댑터 set 해준다
 
         RecycleViewItem item = new RecycleViewItem();
-        dataList.add(new RecycleViewItem(R.drawable.seoul_image,"가족과 함께한 제주 여행","2023.07.01 ~ 2023.08.31"));
-        dataList.add(new RecycleViewItem(R.drawable.seoul_image,"처음 갔던 제주 여행","2023.06.01 ~ 2023.06.31"));
-
+        dataList.add(new RecycleViewItem(R.drawable.seoul_image,"가족과 함께한 제주 여행","2023.07.01 ~ 2023.08.31", false));
+        dataList.add(new RecycleViewItem(R.drawable.seoul_image,"처음 갔던 제주 여행","2023.06.01 ~ 2023.06.31", false));
 
 
         btn1.setOnClickListener(new View.OnClickListener() {

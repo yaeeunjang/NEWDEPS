@@ -7,12 +7,15 @@ public class RecycleViewItem {
     private String title;
     private String date;
 
+    boolean selected;
 
 
-    public RecycleViewItem(int image, String title, String date) {
+
+    public RecycleViewItem(int image, String title, String date, Boolean selected) {
         this.image = image;
         this.title = title;
         this.date = date;
+        this.selected = selected;
     }
 
     public RecycleViewItem() {
@@ -33,6 +36,14 @@ public class RecycleViewItem {
 
         public void setDate(String date) {
             this.date = date;
+        }
+
+        public Boolean getSelectedTF() {
+            return this.selected;
+        }
+
+        public void setSelected(boolean selected) {
+            this.selected = selected;
         }
 
         public int getImage() {
