@@ -27,7 +27,7 @@ public class MyRouteMainActivity extends AppCompatActivity implements RouteRecyc
         setContentView(R.layout.activity_routemain);
 
 
-        Button btn1 = (Button) findViewById(R.id.btn1);
+        ImageButton btn1 = (ImageButton) findViewById(R.id.add_btn);
         Button delete_btn = (Button) findViewById(R.id.delete_btn);
         ImageButton imagebtn1 = (ImageButton) findViewById(R.id.imageButton1);
 
